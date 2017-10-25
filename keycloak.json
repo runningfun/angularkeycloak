@@ -1,0 +1,7 @@
+{
+  "realm": "demo",
+  "auth-server-url": "https://10.46.26.25:8443/auth",
+  "ssl-required": "external",
+  "resource": "angulartest",
+  "public-client": true
+}
