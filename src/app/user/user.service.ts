@@ -5,10 +5,10 @@
 import {Injectable} from '@angular/core';
 
 import {UserComponent} from './user.component';
-import {USERS} from './mock-users'
+import {USERS} from './mock-users';
 
 @Injectable()
-export class UserService{
+export class UserService {
   getUsers(): UserComponent[] {
     return USERS;
   }

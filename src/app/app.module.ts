@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { UserlistComponent } from './userlist/userlist.component';
 import { UserComponent } from './user/user.component';
+import {UrlHelperService} from 'angular-oauth2-oidc';
 
 @NgModule({
             declarations: [
@@ -18,7 +19,7 @@ import { UserComponent } from './user/user.component';
               FormsModule,
               HttpModule
             ],
-            providers: [],
+            providers: [UrlHelperService],
             bootstrap: [AppComponent]
           })
 export class AppModule { }
