@@ -26,6 +26,10 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
+## links
+
 https://github.com/keycloak/keycloak
 
 https://www.npmjs.com/package/angular-oauth2-oidc
+
+https://www.softwarearchitekt.at/post/2016/07/01/authentifizierung-in-angular-2-mit-oauth2-oidc-dem-neuen-router-und-guards.aspx

@@ -1,0 +1,7 @@
+{
+  "realm": "apprealm",
+  "auth-server-url": "https://test.stefan-herschbach.de:23437/auth",
+  "ssl-required": "external",
+  "resource": "coffeelist",
+  "public-client": true
+}
