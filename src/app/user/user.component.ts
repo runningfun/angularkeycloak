@@ -1,14 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-user',
+  selector: 'app-user-detail',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
 export class UserComponent {
 
   id: number;
-  name: string;
+  accountName: string;
+  email: string;
+  firstName: string;
+  lastName: string;
 
 
 }
