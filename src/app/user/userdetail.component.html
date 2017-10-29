@@ -1,3 +1,14 @@
-<p>
-  user works!
-</p>
+<div *ngIf="selectedUser">
+  <h2>{{selectedUser.accountName}} details!</h2>
+  <div>
+    <label>account name: </label>
+    <input [(ngModel)]="selectedUser.accountName" placeholder="account name"/>
+    <label>first name: </label>
+    <input [(ngModel)]="selectedUser.firstName" placeholder="first name"/>
+    <label>last name: </label>
+    <input [(ngModel)]="selectedUser.lastName" placeholder="last name"/>
+    <label>email: </label>
+    <input [(ngModel)]="selectedUser.email" placeholder="email"/>
+    <button (click)="goBack()">Back</button>
+  </div>
+</div>

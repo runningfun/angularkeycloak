@@ -10,9 +10,9 @@ import { Location } from '@angular/common';
   templateUrl: './userdetail.component.html',
   styleUrls: ['./userdetail.component.css']
 })
-export class UserDetailComponent implements OnInit{
+export class UserDetailComponent implements OnInit {
 
-  user: User;
+  selectedUser: User;
 
   constructor(
     private userService: UserService,
@@ -23,7 +23,7 @@ export class UserDetailComponent implements OnInit{
   ngOnInit(): void {
     this.route.paramMap
       .switchMap((params: ParamMap) => this.userService.getUser(+params.get('id')))
-      .subscribe(user => this.user = user);
+      .subscribe(user => this.selectedUser = user);
   }
 
   goBack(): void {
