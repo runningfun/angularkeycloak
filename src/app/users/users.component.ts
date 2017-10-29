@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user/user.service';
-import {UserComponent} from '../user/user.component';
+import {UserDetailComponent} from '../user/userdetail.component';
 import {Router} from '@angular/router';
 
 @Component({
@@ -10,8 +10,8 @@ import {Router} from '@angular/router';
              providers: [UserService]
            })
 export class UsersComponent implements OnInit {
-  users: UserComponent[];
-  selectedUser: UserComponent;
+  users: UserDetailComponent[];
+  selectedUser: UserDetailComponent;
 
   constructor(private router: Router, private userService: UserService) {
 
@@ -25,7 +25,7 @@ export class UsersComponent implements OnInit {
     this.getUsers();
   }
 
-  onSelect(user: UserComponent): void {
+  onSelect(user: UserDetailComponent): void {
     this.selectedUser = user;
   }
 

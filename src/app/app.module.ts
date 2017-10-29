@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { UserComponent } from './user/user.component';
+import { UserDetailComponent } from './user/userdetail.component';
 import {UrlHelperService} from 'angular-oauth2-oidc';
 import {UsersComponent} from './users/users.component';
 import {UserService} from './user/user.service';
@@ -15,7 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
             declarations: [
               AppComponent,
               UsersComponent,
-              UserComponent,
+              UserDetailComponent,
               DashboardComponent,
             ],
             imports: [

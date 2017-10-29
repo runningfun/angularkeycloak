@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-user-detail',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+  templateUrl: './userdetail.component.html',
+  styleUrls: ['./userdetail.component.css']
 })
-export class UserComponent {
+export class UserDetailComponent {
 
   id: number;
   accountName: string;
