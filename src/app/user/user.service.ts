@@ -6,11 +6,23 @@ import {Injectable} from '@angular/core';
 
 import {USERS} from './mock-users';
 import {User} from './user';
+import {HttpClientModule} from '@angular/common/http';
+import {MessageService} from '../message.service';
 
 @Injectable()
 export class UserService {
 
+  constructor(
+    private http: HttpClientModule,
+    private messageService: MessageService) { }
+
+  /** Log a HeroService message with the MessageService */
+  private log(message: string) {
+    this.messageService.add('UserService: ' + message);
+  }
+
   getUsers(): Promise<User[]> {
+    this.messageService.add('UserService: fetched users');
     return Promise.resolve(USERS);
   }
 
