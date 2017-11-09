@@ -27,7 +27,7 @@ export class UserService  {
   }
 
   getUsersFromApi(): Observable<HttpResponse<User[]>> {
-    this.log('get all users')
+    this.log('get all users');
     return this.http.get<User[]>(this.usersUrl, {observe: 'response'});
   }
 
@@ -38,5 +38,7 @@ export class UserService  {
     return this.http.get<User>(url, {observe: 'response'});
   }
 
-
+  updateUser(selectedUser: User): Observable<HttpResponse<Object>> {
+    return this.http.put(this.usersUrl, selectedUser, {observe: 'response'});
+  }
 }

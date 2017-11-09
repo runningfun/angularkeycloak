@@ -37,6 +37,11 @@ export class UserDetailComponent implements OnInit {
       });
   }
 
+  save(): void {
+    this.userService.updateUser(this.selectedUser)
+      .subscribe(() => this.goBack());
+  }
+
   goBack(): void {
     this.location.back();
   }
