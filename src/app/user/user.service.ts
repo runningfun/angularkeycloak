@@ -4,37 +4,39 @@
 
 import {Injectable} from '@angular/core';
 
-import {USERS} from './mock-users';
 import {User} from './user';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClient, HttpResponse} from '@angular/common/http';
 import {MessageService} from '../message.service';
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
-export class UserService {
+export class UserService  {
+
+
+  private usersUrl = 'api/users';  // URL to web api
 
   constructor(
-    private http: HttpClientModule,
-    private messageService: MessageService) { }
+    private http: HttpClient,
+    private messageService: MessageService) {
+    console.log('constructor');
+  }
 
   /** Log a HeroService message with the MessageService */
   private log(message: string) {
     this.messageService.add('UserService: ' + message);
   }
 
-  getUsers(): Promise<User[]> {
-    this.messageService.add('UserService: fetched users');
-    return Promise.resolve(USERS);
+  getUsersFromApi(): Observable<HttpResponse<User[]>> {
+    this.log('get all users')
+    return this.http.get<User[]>(this.usersUrl, {observe: 'response'});
   }
 
-  getUsersSlowly(): Promise<User[]> {
-    return new Promise(resolve => {
-      // Simulate server latency with 2 second delay
-      setTimeout(() => resolve(this.getUsers()), 2000);
-    });
+  getUserFromApi(id: string): Observable<HttpResponse<User>> {
+    this.log('get user for id ' + id);
+    const url = this.usersUrl + '/' + id;
+    console.log('url ' + url);
+    return this.http.get<User>(url, {observe: 'response'});
   }
 
-  getUser(id: number): Promise<User> {
-    return this.getUsers()
-      .then(heroes => heroes.find(hero => hero.id === id));
-  }
+
 }

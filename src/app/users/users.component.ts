@@ -17,12 +17,21 @@ export class UsersComponent implements OnInit {
 
      }
 
-  getUsers(): void {
-    this.userService.getUsers().then(users => this.users = users);
-  }
+     getUserFromApi(): void {
+       this.userService.getUsersFromApi().subscribe(
+         data => {
+           this.users = data.body;
+           console.log('status ' + data.status);
+           console.log(this.users);
+         }
+         ,
+         err => {console.log('Error occurred'); }
+       );
+     }
+
 
   ngOnInit(): void {
-    this.getUsers();
+    this.getUserFromApi();
   }
 
   onSelect(user: User): void {
