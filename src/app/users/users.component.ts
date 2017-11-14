@@ -12,6 +12,7 @@ import {User} from '../user/user';
 export class UsersComponent implements OnInit {
   users: User [];
   selectedUser: User;
+  userAdded: User;
 
   constructor(private router: Router, private userService: UserService) {
 
@@ -40,6 +41,29 @@ export class UsersComponent implements OnInit {
 
   gotoDetail(): void {
     this.router.navigate(['/detail', this.selectedUser.id]);
+  }
+
+  add(accountName: string, email: string, firstName: string, lastName: string): void {
+    accountName = accountName.trim();
+    if (!accountName) { return; }
+    this.userService.addUser( accountName, email, firstName, lastName ).
+    subscribe(
+      data => {
+        this.userAdded = data.body;
+        console.log('status ' + data.status);
+        console.log(this.userAdded);
+        this.users.push(data.body);
+      }
+      ,
+      err => {
+        console.log('Error occurred');
+      });
+  }
+
+
+  delete(user: User): void {
+    this.users = this.users.filter(h => h !== user);
+    this.userService.deleteUser(user).subscribe();
   }
 
  }

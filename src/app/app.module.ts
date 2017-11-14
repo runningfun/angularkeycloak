@@ -16,6 +16,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './message.service';
+import { AccountSearchComponent } from './account-search/account-search.component';
 @NgModule({
             declarations: [
               AppComponent,
@@ -23,6 +24,7 @@ import {MessageService} from './message.service';
               UserDetailComponent,
               DashboardComponent,
               MessagesComponent,
+              AccountSearchComponent,
             ],
             imports: [
               BrowserModule,
