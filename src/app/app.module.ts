@@ -6,7 +6,7 @@ import {HttpModule} from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { UserDetailComponent } from './user/userdetail.component';
-import {UrlHelperService} from 'angular-oauth2-oidc';
+import {OAuthModule, UrlHelperService} from 'angular-oauth2-oidc';
 import {UsersComponent} from './users/users.component';
 import {UserService} from './user/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -17,6 +17,7 @@ import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './message.service';
 import { AccountSearchComponent } from './account-search/account-search.component';
+import {HomeComponent} from './HomeComponent';
 @NgModule({
             declarations: [
               AppComponent,
@@ -25,6 +26,7 @@ import { AccountSearchComponent } from './account-search/account-search.componen
               DashboardComponent,
               MessagesComponent,
               AccountSearchComponent,
+              HomeComponent
             ],
             imports: [
               BrowserModule,
@@ -39,6 +41,7 @@ import { AccountSearchComponent } from './account-search/account-search.componen
                 InMemoryDataService, { dataEncapsulation: false }
               ),
               AppRoutingModule,
+              OAuthModule.forRoot()
             ],
             providers: [UrlHelperService, UserService, MessageService],
             bootstrap: [AppComponent]

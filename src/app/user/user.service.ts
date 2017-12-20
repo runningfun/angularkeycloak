@@ -20,7 +20,7 @@ export class UserService {
     console.log('constructor');
   }
 
-  /** Log a HeroService message with the MessageService */
+  /** Log a UserService message with the MessageService */
   private log(message: string) {
     this.messageService.add('UserService: ' + message);
   }
