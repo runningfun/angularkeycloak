@@ -18,6 +18,7 @@ import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './message.service';
 import { AccountSearchComponent } from './account-search/account-search.component';
 import {HomeComponent} from './HomeComponent';
+import { SensorComponent } from './sensor/sensor.component';
 @NgModule({
             declarations: [
               AppComponent,
@@ -26,7 +27,8 @@ import {HomeComponent} from './HomeComponent';
               DashboardComponent,
               MessagesComponent,
               AccountSearchComponent,
-              HomeComponent
+              HomeComponent,
+              SensorComponent
             ],
             imports: [
               BrowserModule,
