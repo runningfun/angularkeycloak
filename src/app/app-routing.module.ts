@@ -11,7 +11,7 @@ import {SensorComponent} from "./sensor/sensor.component";
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   { path: 'dashboard',  component: DashboardComponent },
-  { path: 'detail/:id', component: UserDetailComponent },
+  { path: 'detail/:accountName', component: UserDetailComponent },
   { path: 'users',     component: UsersComponent },
   { path: 'login',     component: HomeComponent },
   { path: 'sensor',     component: SensorComponent }

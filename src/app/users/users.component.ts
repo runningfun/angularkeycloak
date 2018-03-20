@@ -4,11 +4,11 @@ import {Router} from '@angular/router';
 import {User} from '../user/user';
 
 @Component({
-             selector: 'app-users',
-             templateUrl: './users.component.html',
-             styleUrls: ['./users.component.css'],
-             providers: [UserService]
-           })
+  selector: 'app-users',
+  templateUrl: './users.component.html',
+  styleUrls: ['./users.component.css'],
+  providers: [UserService]
+})
 export class UsersComponent implements OnInit {
   users: User [];
   selectedUser: User;
@@ -16,23 +16,24 @@ export class UsersComponent implements OnInit {
 
   constructor(private router: Router, private userService: UserService) {
 
-     }
-
-     getUserFromApi(): void {
-       this.userService.getUsersFromApi().subscribe(
-         data => {
-           this.users = data.body;
-           console.log('status ' + data.status);
-           console.log(this.users);
-         }
-         ,
-         err => {console.log('Error occurred'); }
-       );
-     }
-
+  }
 
   ngOnInit(): void {
     this.getUserFromApi();
+  }
+
+  getUserFromApi(): void {
+    this.userService.getUsersFromApi().subscribe(
+      data => {
+        this.users = data.body;
+        console.log('status ' + data.status);
+        console.log(this.users);
+      }
+      ,
+      err => {
+        console.log('Error occurred');
+      }
+    );
   }
 
   onSelect(user: User): void {
@@ -40,14 +41,16 @@ export class UsersComponent implements OnInit {
   }
 
   gotoDetail(): void {
-    this.router.navigate(['/detail', this.selectedUser.id]);
+    console.log('gotoDetail '+this.selectedUser.accountName)
+    this.router.navigate(['/detail', this.selectedUser.accountName]);
   }
 
   add(accountName: string, email: string, firstName: string, lastName: string): void {
     accountName = accountName.trim();
-    if (!accountName) { return; }
-    this.userService.addUser( accountName, email, firstName, lastName ).
-    subscribe(
+    if (!accountName) {
+      return;
+    }
+    this.userService.addUser(accountName, email, firstName, lastName).subscribe(
       data => {
         this.userAdded = data.body;
         console.log('status ' + data.status);
@@ -66,4 +69,4 @@ export class UsersComponent implements OnInit {
     this.userService.deleteUser(user).subscribe();
   }
 
- }
+}

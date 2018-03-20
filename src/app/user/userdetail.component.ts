@@ -20,12 +20,14 @@ export class UserDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
-     this.getSelectedUserFromApi(id);
+    const accountName = this.route.snapshot.paramMap.get('accountName');
+    console.log('UserDetailComponent found accountName: '+accountName)
+     this.getSelectedUserFromApi(accountName);
   }
 
-  getSelectedUserFromApi(id: string): void {
-    this.userService.getUserFromApi(id).subscribe(
+  getSelectedUserFromApi(accountName: string): void {
+    console.log('getSelectedUserFromApi for accountName'+accountName)
+    this.userService.getUserFromApi(accountName).subscribe(
       data => {
         this.selectedUser = data.body;
         console.log('status ' + data.status);

@@ -12,8 +12,8 @@ import {Observable} from 'rxjs/Observable';
 @Injectable()
 export class UserService {
 
-  private usersUrl = 'api/users';  // URL to web api
-  private userFromRealServiceUrl = 'https://test.stefan-herschbach.de:23438/api/coffeegroups/dummy';
+  //private usersUrl = 'api/users';  // URL to web api
+  private userFromRealServiceUrl = 'http://localhost:8080/api/users';
 
   constructor(private http: HttpClient,
               private messageService: MessageService) {
@@ -27,29 +27,31 @@ export class UserService {
 
   getUsersFromApi(): Observable<HttpResponse<User[]>> {
     this.log('get all users');
-    return this.http.get<User[]>(this.usersUrl, {observe: 'response'});
+    console.log('getUsersFromApi');
+    return this.http.get<User[]>(this.userFromRealServiceUrl, {observe: 'response'});
   }
 
-  getUserFromApi(id: string): Observable<HttpResponse<User>> {
-    this.log('get user for id ' + id);
-    const url = this.usersUrl + '/' + id;
+  getUserFromApi(accountName: string): Observable<HttpResponse<User>> {
+    console.log('get user for accountName ' + accountName);
+    this.log('get user for accountName ' + accountName);
+    const url = this.userFromRealServiceUrl + '/' + accountName;
     console.log('url ' + url);
     return this.http.get<User>(url, {observe: 'response'});
   }
 
   updateUser(selectedUser: User): Observable<HttpResponse<Object>> {
-    return this.http.put(this.usersUrl, selectedUser, {observe: 'response'});
+    return this.http.put(this.userFromRealServiceUrl, selectedUser, {observe: 'response'});
   }
 
   addUser(accountName: String, email: string, firstName: string, lastName: string): Observable<HttpResponse<User>> {
-    return this.http.post<User>(this.usersUrl,
+    return this.http.post<User>(this.userFromRealServiceUrl,
                                 {accountName: accountName, email: email, firstName: firstName, lastName: lastName},
                                 {observe: 'response'});
   }
 
   deleteUser(user: User): Observable<HttpResponse<User>> {
-    this.log('delete user for id ' + user.id);
-    const url = this.usersUrl + '/' + user.id;
+    this.log('delete user with account name' + user.accountName);
+    const url = this.userFromRealServiceUrl + '/' + user.accountName;
     return this.http.delete<User>(url, {observe: 'response'});
   }
 

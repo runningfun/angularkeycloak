@@ -12,8 +12,8 @@ import {UserService} from './user/user.service';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AppRoutingModule } from './app-routing.module';
 
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { InMemoryDataService } from './in-memory-data.service';
+// import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+// import { InMemoryDataService } from './in-memory-data.service';
 import { MessagesComponent } from './messages/messages.component';
 import {MessageService} from './message.service';
 import { AccountSearchComponent } from './account-search/account-search.component';
@@ -39,9 +39,9 @@ import { SensorComponent } from './sensor/sensor.component';
               // The HttpClientInMemoryWebApiModule module intercepts HTTP requests
               // and returns simulated server responses.
               // Remove it when a real server is ready to receive requests.
-              HttpClientInMemoryWebApiModule.forRoot(
-                InMemoryDataService, { dataEncapsulation: false }
-              ),
+              // HttpClientInMemoryWebApiModule.forRoot(
+              //   InMemoryDataService, { dataEncapsulation: false }
+              // ),
               AppRoutingModule,
               OAuthModule.forRoot()
             ],

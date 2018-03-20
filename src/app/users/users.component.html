@@ -22,7 +22,7 @@
   <li *ngFor="let user of users"
       [class.selected]="user === selectedUser"
       (click)="onSelect(user)">
-    <span class="badge">{{user.id}}</span> {{user.lastName}}
+    <span class="badge">{{user.accountName}}</span> {{user.lastName}}
     <button class="delete" title="delete user"
             (click)="delete(user)">x</button>
   </li>
