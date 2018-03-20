@@ -1,5 +1,6 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
+import {SensorService} from "./sensor.service";
 
 @Component({
   selector: 'app-sensor',
@@ -9,15 +10,27 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SensorComponent implements OnInit {
 
-  constructor(private http: HttpClient){
+  currentTemperature: number;
+
+  constructor(private http: HttpClient, private  sensorService: SensorService) {
   }
 
   ngOnInit() {
-    console.log("before request");
-    this.http.get('http://localhost:8080/api/temperature').subscribe(data => {
-      console.log(data);
-    });
-    console.log("after request");
+    this.getTemperatureFromApi();
+  }
+
+  getTemperatureFromApi(): void {
+    console.log('getTemperatureFromApi')
+    this.sensorService.getTemperatureFromApi().subscribe(
+      data => {
+        this.currentTemperature = data.body;
+        console.log('status ' + data.status);
+        console.log(this.currentTemperature);
+      }
+      ,
+      err => {
+        console.log('Error occurred');
+      });
   }
 
 }

@@ -19,6 +19,7 @@ import {MessageService} from './message.service';
 import { AccountSearchComponent } from './account-search/account-search.component';
 import {HomeComponent} from './HomeComponent';
 import { SensorComponent } from './sensor/sensor.component';
+import {SensorService} from "./sensor/sensor.service";
 @NgModule({
             declarations: [
               AppComponent,
@@ -45,7 +46,7 @@ import { SensorComponent } from './sensor/sensor.component';
               AppRoutingModule,
               OAuthModule.forRoot()
             ],
-            providers: [UrlHelperService, UserService, MessageService],
+            providers: [UrlHelperService, UserService, MessageService, SensorService],
             bootstrap: [AppComponent]
           })
 export class AppModule { }
